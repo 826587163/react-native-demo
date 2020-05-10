@@ -20,7 +20,7 @@ class homePage extends Component {
 }
  const styels = StyleSheet.create({
      font:{
-         fontSize:40
+         fontSize:30
      }
  })
 export default homePage;

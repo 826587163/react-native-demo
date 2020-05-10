@@ -1,53 +1,23 @@
-import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+import React, { Component } from 'react';
+import {createAppContainer} from 'react-navigation'
+import {createStackNavigator} from 'react-navigation-stack'
+import BottomNavigator from './js/page/root/rootPage'
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-const App: () => React$Node = () => {
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          
-          <View>
-              <Text></Text>
-            </View>
-          <View style={styles.body}>
-           
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
-  );
-};
-
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  
-});
-
-export default App;
+const AppStack = createStackNavigator({
+      BottomNavigator:{
+        screen:BottomNavigator,
+        navigationOption:{
+          headerShow:false
+        }
+      },
+      
+    },
+    {
+      mode:'modal',
+      headerMode:'none'
+    }
+)
+const TabNavigatorConfigs = {
+  swipeEnabled:true
+}
+export default createAppContainer(AppStack,TabNavigatorConfigs)

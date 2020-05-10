@@ -14,7 +14,7 @@ class WelcomePage extends Component {
     render() { 
         return ( 
             <View>
-               <TextInput placeholder='请输入' style={styles.input} onChangeText={this.handleUser}></TextInput>
+               <TextInput placeholder='请输入a' style={styles.input} onChangeText={this.handleUser}></TextInput>
                <TouchableOpacity onPress={()=>this.submitClick(this.state.user)} style={{backgroundColor:'red',width:70}}>
                    <Text style={{fontSize:30}}>提交</Text>
                </TouchableOpacity>

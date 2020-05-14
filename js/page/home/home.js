@@ -30,7 +30,12 @@ class home extends Component {
           {this.state.isHeaderShow ? (
             <View>
               <HeaderSwiper swiperList={this.state.list.sprows} />
-              <ListHot hotList={this.state.list.sliderows} />
+              <ListHot
+                hotList={this.state.list.sliderows}
+                onClickVideo={(title, vodid) => {
+                  this.openVideo(title, vodid);
+                }}
+              />
             </View>
           ) : (
             <Text></Text>
@@ -48,7 +53,11 @@ class home extends Component {
       </Provider>
     );
   }
-  onHorizontalSelectedIndexChange(index) {}
+  openVideo(title, vodid) {
+    console.log(title, vodid);
+    const {navigation} = this.props;
+    navigation.navigate('HomeChild', {title: title, vodid: vodid});
+  }
   getList() {
     this.setState({
       isHeaderShow: false,

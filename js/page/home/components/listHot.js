@@ -37,7 +37,7 @@ class listHot extends Component {
                 key={v.vodid}
                 style={{width: 50, height: 80}}
                 onPress={() => {
-                  this.openMovie(v.title);
+                  this.openMovie(v.title, v.vodid);
                 }}>
                 <Image source={{uri: v.pic}} style={{width: 50, height: 80}} />
               </TouchableOpacity>
@@ -54,9 +54,11 @@ class listHot extends Component {
     );
   }
   getList() {}
-  openMovie(title) {
+  openMovie(title, vodid) {
+    console.log(this.props);
+    this.props.onClickVideo(title, vodid);
     console.log('1111s');
-    console.log(title);
+    //console.log(title);
   }
 }
 const styles = StyleSheet.create({});

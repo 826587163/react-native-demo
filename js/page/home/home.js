@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
-import {View, Text, Button, StyleSheet} from 'react-native';
+import {View, Text, Button, StyleSheet,ScrollView} from 'react-native';
 import HeaderSwiper from './components/swiper';
 import ListHot from './components/listHot';
+import NestedRows from './components/recommend';
+import NestedTvRows from './components/teleplayList';
 import DeviceStorage from '../storage/DeviceStorage';
 import {
   Provider,
@@ -26,7 +28,8 @@ class home extends Component {
     const {navigation} = this.props;
     return (
       <Provider>
-        <View>
+        <ScrollView>
+        
           {this.state.isHeaderShow ? (
             <View>
               <HeaderSwiper swiperList={this.state.list.sprows} />
@@ -36,6 +39,12 @@ class home extends Component {
                   this.openVideo(title, vodid);
                 }}
               />
+              <NestedRows onClickVideo={(title, vodid) => {
+                  this.openVideo(title, vodid);
+                }} nested={this.state.list.nestedrows[0].vodrows}/>
+                <NestedTvRows onClickVideo={(title, vodid) => {
+                  this.openVideo(title, vodid);
+                }} nested={this.state.list.nestedrows[1].vodrows}/>
             </View>
           ) : (
             <Text></Text>
@@ -47,9 +56,11 @@ class home extends Component {
             navigation.navigate('HomeChild');
           }}
         /> */}
-          <Text>我是首页</Text>
+          
           <View></View>
-        </View>
+
+        </ScrollView>
+       
       </Provider>
     );
   }

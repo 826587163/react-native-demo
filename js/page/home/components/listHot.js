@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Grid } from '@ant-design/react-native'
 import {
   View,
   Text,
@@ -30,26 +31,25 @@ class listHot extends Component {
           />
           <Text style={{fontSize: 24}}>热门影视</Text>
         </Text>
-        <View>
-          {this.props.hotList.map((v) => {
+      <ScrollView  horizontal={true}>
+      <View style={{flexDirection: 'row',flex:1,justifyContent:'space-between'}}>
+          {this.props.hotList.map((v,i) => {
             return (
+              
               <TouchableOpacity
                 key={v.vodid}
-                style={{width: 50, height: 80}}
+                style={{width: 100, height: 150,margin:5,}}
                 onPress={() => {
                   this.openMovie(v.title, v.vodid);
                 }}>
-                <Image source={{uri: v.pic}} style={{width: 50, height: 80}} />
+                <Image source={{uri: v.pic}} style={{width: 100, height: 120}} />
+              <Text style={{textAlign:'center'}}>{v.title}</Text>
               </TouchableOpacity>
             );
           })}
-          {/* <FlatList
-            data={this.props.hotList}
-            renderItem={({item}) => (
-              
-            )}
-            keyExtractor={(item, index) => item.vodid}></FlatList> */}
         </View>
+      </ScrollView>
+        
       </View>
     );
   }
@@ -61,5 +61,7 @@ class listHot extends Component {
     //console.log(title);
   }
 }
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+
+});
 export default listHot;

@@ -146,7 +146,7 @@ export default class App extends React.Component {
     this.setState({
       Loading: false,
     });
-    let url = `https://ios.xiaoxiaoapps.com/vod/reqplay/${vodid}?playindex=${index}`;
+    let url = `https://www.leleapps.com/vod/reqplay/${vodid}?playindex=${index}`;
     fetch(url)
       .then((res) => res.json())
       .then((responseJson) => {
